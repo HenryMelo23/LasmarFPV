@@ -1,74 +1,285 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>O PROFESSOR</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LasmarFPV - Simule seu Voo</title>
   <style>
-    body { font-family: sans-serif; text-align: center; background: #f0f0f0; padding: 30px; }
-    input { width: 300px; padding: 10px; font-size: 16px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-    #resultado { margin-top: 30px; }
-    .disponivel { color: green; font-weight: bold; }
-    .nao-disponivel { color: red; font-weight: bold; }
-    img { width: 150px; margin: 10px auto; border-radius: 8px; box-shadow: 2px 2px 8px #888; }
-    .card { background: white; padding: 20px; border-radius: 12px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
-    .whatsapp-button {
-      display: inline-block;
-      margin-top: 15px;
-      background-color: #25D366;
+    @font-face {
+    font-family: 'OrbitronBold';
+    src: url('Fontes/orbitron-bold.otf') format('opentype');
+    }
+    @font-face {
+    font-family: 'montserrat';
+    src: url('Fontes/montserrat-semi-bold.ttf') format('opentype');
+    }
+    @font-face {
+    font-family: 'Michroma';
+    src: url('Fontes/Michroma.ttf') format('opentype');
+    }
+
+
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('Imagens/Background_Prancheta 1.png');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Arial', sans-serif;
       color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
+    }
+
+    .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 100vw;
+    padding: 2vh 5vw;
+    gap: 9vw;
+    }
+
+
+    
+
+
+    .logo {
+    width: 20vw;
+    height: auto;
+    }
+
+
+    .title {
+      font-size: 2rem;
       font-weight: bold;
+      text-align: center;
+    }
+
+    .pricing-section {
+    width: 25vw;
+    
+    text-align: left;
+    align-items: flex-start; /* manter o texto à esquerda */
+    margin-top: -30px; 
+    
+    }
+    
+    .price-text,
+    .confirm-text {
+    font-family: 'OrbitronBold', sans-serif;
+    }
+    .pricing-section h1,
+    .pricing-section .subtext,
+    .pricing-section .green-button,
+    .pricing-section .arrows {
+    margin-bottom: 3rem; /* ajuste o valor conforme necessário */
+    }
+
+    .pricing-section .arrows {
+    margin-bottom: 0; /* remover margem final se não quiser espaçamento após isso */
+    }
+    
+
+    .main-title {
+    font-size: 2.5vw;
+    font-family: 'OrbitronBold', sans-serif;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    word-spacing: 0.5rem;
+    }
+
+    .title-line {
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%;
+    }
+
+    .subtext {
+    font-size: 1.3vw;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 2rem;
+    }
+
+
+    .green-button {
+    background-color: #00cc66;
+    color: white;
+    padding: 1.9vh 5vw;
+    font-size: 1.5vw;
+    border: none;
+    border-radius: 15px;
+    width: 25.5vw; /* novo */
+     /* opcional para não ultrapassar */
+    display: block;
+    margin: 2rem 0;
+    }
+
+
+    .arrows {
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2vw;
+    margin-top: 2vw;
+    padding: 0 1vw;
+    gap: 1vh;
+    }
+
+    .arrow-up {
+    display: inline-block;
+    transform: rotate(180deg);
+    font-size: 2vw ; /* Aumente esse valor conforme desejar */
+    line-height: 1;
+    color: rgb(255, 255, 255);
+    }
+    .pricing-box {
+    max-width: 500px; /* aumente conforme necessário */
+    width: 100%;
+    }
+
+
+
+
+    .form-section {
+        font-size: 1rem;  
+      background-color: rgba(23, 23, 23, 0.8);
+      padding: 2rem;
+      border-radius: 20px;
+      width: 100%;
+    }
+
+    .form-section label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    .select-wrapper {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .select-wrapper::after {
+      content: '⌵';
+      position: absolute;
+      right: 1rem;
+      top: 45%;
+      transform: translateY(-50%);
+      color: rgb(206, 204, 204);
+      pointer-events: none;
+      font-size: 1rem;
+    }
+
+    .form-section input,
+    .form-section select {
+      width: 100%;
+      padding: 0.90rem;
+      background-color: rgb(15, 15, 15);
+      border: 1px solid rgb(54, 54, 54);
+      border-radius: 10px;
+      color: white;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      
+    }
+    .form-section input {
+    margin-bottom: 2.5rem;
+    }
+
+    .select-wrapper {
+    margin-bottom: 2.5rem;
+    }
+
+
+    .form-section select option:first-child {
+      display: none;
+    }
+
+    .form-section button {
+      font-family: 'OrbitronBold', sans-serif;
+
+      background-color: #C91520;
+      color: white;
+      padding: 1rem;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1200px) {
+      .container {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>📚 O Professor</h1>
-  <input id="busca" placeholder="Digite o nome do livro" onkeydown="checarEnter(event)">
-  <button onclick="buscar()">Pesquisar</button>
+  <div class="container">
+    <!-- Container 3: Formulário -->
+    <div class="box">
+      <div class="form-section">
+        <label>Tempo de vídeo</label>
+        <input type="text" placeholder="Ex: 2 minutos" />
 
-  <div id="resultado"></div>
+        <label>Precisa de edição?</label>
+        <div class="select-wrapper">
+          <select>
+            <option selected disabled hidden></option>
+            <option>Sim</option>
+            <option>Não</option>
+          </select>
+        </div>
 
-  <script>
-    function checarEnter(event) {
-      if (event.key === 'Enter') {
-        buscar();
-      }
-    }
+        <label>Deslocamento incluso?</label>
+        <div class="select-wrapper">
+          <select>
+            <option selected disabled hidden></option>
+            <option>Sim</option>
+            <option>Não</option>
+          </select>
+        </div>
 
-    async function buscar() {
-      const titulo = document.getElementById('busca').value;
-      const res = await fetch(`http://localhost:5000/buscar?titulo=${titulo}`);
-      const data = await res.json();
-      
-      const resultado = document.getElementById('resultado');
-      resultado.innerHTML = '';
+        <button>CALCULAR</button>
+      </div>
+    </div>
 
-      if ('autor' in data) {
-        const status = data.disponivel ? 
-          `<p class="disponivel">✅ Tem no catálogo</p>` : 
-          `<p class="nao-disponivel">❌ Não tem</p>`;
+    <!-- Container 2: Texto e botão verde -->
+    <!-- Container 2: Texto e botão verde -->
+    <div class="box">
+        <div class="pricing-section">
+        <h1 class="main-title"><span class="title-line">CALCULE AGORA</span><br>SEU VOO</h1>
 
-        resultado.innerHTML = `
-          <div class="card">
-            <img src="${data.imagem}" alt="Capa do livro">
-            <h2>${data.titulo}</h2>
-            <p><strong>Autor:</strong> ${data.autor}</p>
-            <p><strong>Sinopse:</strong> ${data.sinopse}</p>
-            ${status}
-            <a class="whatsapp-button" href="https://wa.me/+5561995948789?text=Olá,%20quero%20saber%20sobre%20o%20livro%20${encodeURIComponent(data.titulo)}" target="_blank">
-              📲 Falar no WhatsApp
-            </a>
+        <p class="subtext">Simule valores e<br>receba na hora</p>
+    
+        
+    
+        <button class="green-button price-text">500$</button>
+        <div class="arrows">
+            <span class="arrow-up">⌵</span>
+            <span class="confirm-text">clique para confirmar</span>
+            <span class="arrow-up">⌵</span>
           </div>
-        `;
-      } else {
-        resultado.innerHTML = `
-          <p class="nao-disponivel">Livro não encontrado no catálogo</p>
-        `;
-      }
-    }
-  </script>
+          
+        </div>
+    </div>
+  
+
+    <!-- Container 1: Logo -->
+    <div class="box">
+      <img src="Imagens/fpv logo desktop.png" alt="Logo" class="logo" />
+    </div>
+  </div>
 </body>
 </html>
