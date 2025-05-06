@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LasmarFPV - Simule seu Voo</title>
   <style>
@@ -26,6 +27,14 @@
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body { /* ✅ ADICIONE ESTA REGRA */
+      width: 100%;
+      overflow-x: hidden;
     }
 
     body {
@@ -289,11 +298,18 @@
     }
 
     body {
-        background-image: url('Imagens/Background Mobile.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+      background-image: url('Imagens/Background Mobile.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 100vh;            /* força altura da tela */
+      overflow: hidden;         /* impede rolagem */
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;  /* centraliza verticalmente */
+  }
+
     .logo{
         display: none;
     }
@@ -327,12 +343,14 @@
     }
 
     .main-title-mobile {
+        font-family: "OrbitronBold", sans-serif;
         font-size: 1.6rem;
         margin-bottom: 10px;
         color: #fff;
     }
 
     .subtext-mobile {
+      font-family: 'Poppins' ,sans-serif;
         font-size: 1rem;
         color: #ddd;
     }
@@ -367,11 +385,14 @@
         align-items: center;
         padding: 2rem;
         flex-direction: column;
+        max-height: 90vh;
+        overflow-y: hidden;
+
     }
 
     .mobile-form-section {
         background-color: rgba(23, 23, 23, 0.8);
-        padding: 2rem;
+        padding: 1rem;
         border-radius: 20px;
         width: 100%;
         max-width: 90vw;
@@ -391,10 +412,10 @@
 
     #mobile-mensagemErro {
         color: red;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         position: absolute;
-        top: 93%;
-        left: 0;
+        top: 100%;
+        left: 6px;
         margin-top: 0.2rem;
         display: none;
     }
@@ -461,6 +482,10 @@
         min-height: 100vh;
         overflow-x: hidden;
     }
+    #textoConfirmacao {
+        position: relative;
+        top: -15px; /* Sobe o texto */
+    }
     .form-mobile-wrapper select {
         width: 100%;
         max-width: 100%;
@@ -522,7 +547,7 @@
     display: block;
     }
     #mobile-whatsapp-section {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: center;
     }
 
@@ -541,8 +566,8 @@
     .green-button-mobile {
         background-color: #00cc66;
         color: white;
-        padding: 30px 14px;
-        font-size: 18px;
+        padding: 12px 10px;
+        font-size: 14px;
         border: none;
         border-radius: 15px;
         width: 50vw;
@@ -596,12 +621,60 @@
 
 
     }
+    @media screen and (max-width: 380px) {
+  .form-mobile-wrapper {
+    transform: scale(0.85) translateY(-50px);
+    transform-origin: top center;
+    margin-top: 20px;
+    padding-bottom: 40px;
+  }
+
+  .mobile-wrapper {
+    padding-top: 20px;
+  }
+
+  .resultado-wrapper {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .botao-e-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .green-button-mobile {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .confirmacao-texto {
+    font-size: 12px;
+    margin: 0; /* remove margens adicionais */
+  }
+
+  .arrow-left,
+  .arrow-right {
+    font-size: 18px;
+    margin: 0;
+    line-height: 1; /* garante que não fique deslocado */
+  }
+  }
 
     /*MOOOOOOOOOOOOOOOOOOOOOOOOOOBIIIIIIIIIIIIIIILEEEEEEEEEEEEEEEEE*/
     
   </style>
 </head>
 <body>
+  <div class="mobile-wrapper">
     <img src="Imagens/fpv logo mobile.png" alt="Logo Mobile" class="logo-mobile" />
     <!-- Título e subtítulo para Mobile -->
     <div class="title-mobile">
@@ -849,22 +922,38 @@
     document.getElementById("textoConfirmacao").style.display = "block";
   }
 
-  function enviarVooMobileParaWhatsapp() {
-  const horas = parseFloat(document.getElementById("mobile-horasVoo").value);
-  const edicao = document.getElementById("mobile-edicao").value;
-  const deslocamento = document.getElementById("mobile-deslocamento").value;
+    function enviarVooMobileParaWhatsapp() {
+    const horas = parseFloat(document.getElementById("mobile-horasVoo").value);
+    const edicao = document.getElementById("mobile-edicao").value;
+    const deslocamento = document.getElementById("mobile-deslocamento").value;
 
-  const mensagem = `Olá, tenho interesse em ${horas} minutos de voo ${edicao === "Sim" ? "com edição" : "sem edição"}, ${deslocamento === "Sim" ? "com deslocamento" : "sem deslocamento"}.`;
+    const mensagem = `Olá, tenho interesse em ${horas} minutos de voo ${edicao === "Sim" ? "com edição" : "sem edição"}, ${deslocamento === "Sim" ? "com deslocamento" : "sem deslocamento"}.`;
 
-  const url = `https://wa.me/556181813384?text=${encodeURIComponent(mensagem)}`;
-  window.open(url, "_blank");
-}
+    const url = `https://wa.me/556181813384?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, "_blank");
+  }
+  // Esconde o resultado ao alterar as horas no mobile
+  document.getElementById("mobile-horasVoo").addEventListener("input", function () {
+    document.getElementById("resultadoMobile").style.display = "none";
+    document.querySelector(".arrow-left").style.display = "none";
+    document.querySelector(".arrow-right").style.display = "none";
+    document.getElementById("textoConfirmacao").style.display = "none";
+  });
 
 
+  document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('mobile-horasVoo');
+    const erro = document.getElementById('mobile-mensagemErro');
 
+    if (input && erro) {
+        input.addEventListener('input', function () {
+            erro.style.display = 'none';
+        });
+    }
+});
 
     
   </script>
-  
+  </div>
 </body>
 </html>
