@@ -17,6 +17,10 @@
     font-family: 'Michroma';
     src: url('Fontes/Michroma.ttf') format('opentype');
     }
+    @font-face {
+    font-family: 'Poppins';
+    src: url('Fontes/poppins-light.ttf') format('opentype');
+    }
 
 
 
@@ -80,11 +84,39 @@
     .pricing-section .arrows {
     margin-bottom: 3rem; /* ajuste o valor conforme necessário */
     }
+    form {
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 18px;
+    }
+
+    input, textarea {
+    width: 45%;
+    font-size: 16px;
+    }
 
     .pricing-section .arrows {
     margin-bottom: 0; /* remover margem final se não quiser espaçamento após isso */
     }
     
+    .input-wrapper {
+    position: relative;
+    margin-bottom: 2rem; /* dá espaço para o erro sem afetar os outros campos */
+    }
+
+    #mensagemErro {
+    color: red;
+    font-size: 0.9rem;
+    position: absolute;
+    top: 93%; /* exatamente abaixo do input */
+    left: 0;
+    margin-top: 0.2rem; /* pequeno espaço abaixo da caixa */
+    display: none; /* mostra só quando necessário */
+    }
+
 
     .main-title {
     font-size: 2.5vw;
@@ -101,10 +133,12 @@
     }
 
     .subtext {
-    font-size: 1.3vw;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 2rem;
+    font-size: 2.4vw;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1.8rem;
+    line-height: 1; /* diminua mais se quiser menos espaço entre linhas */
     }
+
 
 
     .green-button {
@@ -119,8 +153,8 @@
     display: block;
     margin: 2rem 0;
     }
-
-
+    
+    
     .arrows {
     width: 100%;
     
@@ -192,21 +226,29 @@
       
     }
     .form-section input {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
     }
-
+    .arrow-left, .arrow-right{
+        display: none;
+    }
     .select-wrapper {
     margin-bottom: 2.5rem;
     }
 
-
+    .green-button-mobile {
+        display: none;
+    }
+    .confirmacao-texto {
+    display: none;
+    }
     .form-section select option:first-child {
       display: none;
     }
 
     .form-section button {
-      font-family: 'OrbitronBold', sans-serif;
-
+      font-family: 'Michroma', sans-serif;
+      font-weight: 600;
+      letter-spacing: 2PX;
       background-color: #C91520;
       color: white;
       padding: 1rem;
@@ -216,47 +258,445 @@
       font-size: 1rem;
       cursor: pointer;
     }
-
+    .logo-mobile {
+    display: none;
+    }
+    .title-mobile{
+        display: none;
+    }
+    .form-mobile-wrapper {
+        display: none;
+        }
     @media (max-width: 1200px) {
       .container {
         flex-wrap: wrap;
         justify-content: center;
       }
     }
+    .green-button,
+    .arrows {
+    display: none;
+    }
+    @media (max-width: 768px) {
+    .logo-desktop {
+        display: none;
+    }
+
+    .logo-mobile {
+        display: block;
+        width: 100px;
+        margin: 20px auto;
+    }
+
+    body {
+        background-image: url('Imagens/Background Mobile.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .logo{
+        display: none;
+    }
+    .pricing-section{
+        display: none;
+    }
+    .title-mobile {
+    display: none;
+    }
+
+    /* Mostra a versão desktop por padrão */
+    .main-title,
+    .subtext {
+    display: block;
+    }
+
+    /* Estilo para mobile */
+    @media (max-width: 768px) {
+    /* Esconde o título e subtítulo padrão */
+    .main-title,
+    .subtext {
+        display: none;
+    }
+
+    /* Mostra a versão mobile */
+    .title-mobile {
+        display: block;
+        text-align: center;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .main-title-mobile {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .subtext-mobile {
+        font-size: 1rem;
+        color: #ddd;
+    }
+    /* Por padrão, nada muda em desktop */
+    .form-mobile-wrapper {
+    display: none;
+    }
+    .resultado-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    margin-top: 1vh;
+    }
+
+    .botao-e-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+    
+    
+
+
+
+    }
+    }
+    @media (max-width: 768px) {
+    .form-mobile-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        flex-direction: column;
+    }
+
+    .mobile-form-section {
+        background-color: rgba(23, 23, 23, 0.8);
+        padding: 2rem;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 90vw;
+        font-size: 1rem;
+    }
+
+    .mobile-form-section label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .mobile-input-wrapper {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    #mobile-mensagemErro {
+        color: red;
+        font-size: 0.9rem;
+        position: absolute;
+        top: 93%;
+        left: 0;
+        margin-top: 0.2rem;
+        display: none;
+    }
+
+    .mobile-select-wrapper {
+        position: relative;
+        margin-bottom: 2.5rem;
+    }
+
+    .mobile-select-wrapper::after {
+        content: '⌵';
+        position: absolute;
+        right: 1rem;
+        top: 45%;
+        transform: translateY(-50%);
+        color: rgb(206, 204, 204);
+        pointer-events: none;
+        font-size: 1rem;
+    }
+
+    .mobile-form-section input,
+    .mobile-form-section select {
+        width: 100%;
+        padding: 0.90rem;
+        background-color: rgb(15, 15, 15);
+        border: 1px solid rgb(54, 54, 54);
+        border-radius: 10px;
+        color: white;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .mobile-form-section button {
+        font-family: 'OrbitronBold', sans-serif;
+        background-color: #C91520;
+        color: white;
+        padding: 1rem;
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    /* Oculta desktop no mobile */
+    .container {
+        display: none;
+    }
+
+    /* Mostra logo mobile e título se precisar */
+    .logo-mobile,
+    .title-mobile {
+        display: block;
+    }
+    }
+    @media screen and (max-width: 768px) {
+    body {
+        background-image: url('Imagens/Background Mobile.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+    .form-mobile-wrapper select {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .form-mobile-wrapper option {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .form-mobile-wrapper select {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+    .dropdown-mobile {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', sans-serif;
+    }
+
+    .dropdown-selected {
+    background-color: #0f0f0f;
+    padding: 0.9rem;
+    border: 1px solid #363636;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    }
+
+    .dropdown-options {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #0f0f0f;
+    border: 1px solid #363636;
+    border-radius: 10px;
+    z-index: 10;
+    top: 110%;
+    }
+
+    .dropdown-options div {
+    padding: 0.9rem;
+    border-top: 1px solid #222;
+    color: white;
+    cursor: pointer;
+    }
+
+    .dropdown-options div:hover {
+    background-color: #1a1a1a;
+    }
+
+    .dropdown-mobile.active .dropdown-options {
+    display: block;
+    }
+    #mobile-whatsapp-section {
+    margin-top: 2rem;
+    text-align: center;
+    }
+
+
+
+    .arrow-up-mobile {
+    font-size: 1.2rem;
+    animation: pulseArrow 1.5s infinite;
+    }
+
+    @keyframes pulseArrow {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+    }
+    .green-button-mobile {
+        background-color: #00cc66;
+        color: white;
+        padding: 30px 14px;
+        font-size: 18px;
+        border: none;
+        border-radius: 15px;
+        width: 50vw;
+        max-width: 400px;
+        display: block;
+        margin: 20px auto;
+        font-family: 'Poppins', sans-serif;;
+        text-align: center;
+    }
+
+    
+
+
+    .resultado-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    }
+
+    .green-button-mobile {
+    width: 50vw; /* mantém o botão grande */
+    position: relative;
+    z-index: 1;
+    padding: 1vh 5vw;
+    margin-top: -3vh;
+    display: none;
+    }
+
+    .arrow-left, .arrow-right {
+    position: absolute;
+    display: none;
+
+    font-size: 6vw;
+    color: white;
+    line-height: 1;
+    top: 0vh;
+    transform: translateY(-50%);
+    }
+
+    .arrow-left {
+    left: calc(50% - 30vw); /* ajusta para colar na esquerda do botão */
+    transform: translateY(-50%) rotate(-90deg);
+    }
+
+    .arrow-right {
+    right: calc(50% - 30vw); /* ajusta para colar na direita do botão */
+    transform: translateY(-50%) rotate(90deg);
+    }
+
+
+    }
+
+    /*MOOOOOOOOOOOOOOOOOOOOOOOOOOBIIIIIIIIIIIIIIILEEEEEEEEEEEEEEEEE*/
+    
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Container 3: Formulário -->
-    <div class="box">
-      <div class="form-section">
-        <label>Tempo de vídeo</label>
-        <input type="text" placeholder="Ex: 2 minutos" />
-
-        <label>Precisa de edição?</label>
-        <div class="select-wrapper">
-          <select>
-            <option selected disabled hidden></option>
-            <option>Sim</option>
-            <option>Não</option>
-          </select>
-        </div>
-
-        <label>Deslocamento incluso?</label>
-        <div class="select-wrapper">
-          <select>
-            <option selected disabled hidden></option>
-            <option>Sim</option>
-            <option>Não</option>
-          </select>
-        </div>
-
-        <button>CALCULAR</button>
-      </div>
+    <img src="Imagens/fpv logo mobile.png" alt="Logo Mobile" class="logo-mobile" />
+    <!-- Título e subtítulo para Mobile -->
+    <div class="title-mobile">
+        <h1 class="main-title-mobile"><span class="title-line">CALCULE AGORA</span><br>SEU VOO</h1>
+        <p class="subtext-mobile">Simule valores e<br>receba na hora</p>
     </div>
+  
+        <div class="form-mobile-wrapper">
+            <div class="mobile-form-section">
+            <div class="mobile-input-wrapper">
+                <label>Horas de voo</label>
+                <input type="number" id="mobile-horasVoo" placeholder="Ex: 60 minutos" />
+                <span id="mobile-mensagemErro" style="display: none;">Ai cê me quebra, Mínimo 60 minutos</span>
+            </div>
+        
+            <label>Precisa de edição?</label>
+            <div class="dropdown-mobile" data-target="mobile-edicao">
+            <div class="dropdown-selected">Selecione</div>
+            <div class="dropdown-options">
+                <div>Sim</div>
+                <div>Não</div>
+            </div>
+            </div>
+            <input type="hidden" id="mobile-edicao">
+
+        
+            <label>Deslocamento incluso?</label>
+            <div class="dropdown-mobile" data-target="mobile-deslocamento">
+            <div class="dropdown-selected">Selecione</div>
+            <div class="dropdown-options">
+                <div>Sim</div>
+                <div>Não</div>
+            </div>
+            </div>
+            <input type="hidden" id="mobile-deslocamento">
+
+        
+            <!-- Botão verde para mobile -->
+            <button id="btnCalcularMobile" onclick="calcular()" class="btn btn-success btn-mobile">Calcular</button>
+
+
+            </div>
+        </div>
+        <!-- Botão verde só para mobile -->
+        
+        <div class="resultado-wrapper">
+            <div class="arrow-left">⌵</div>
+          
+            <div class="botao-e-texto">
+              <button id="resultadoMobile" class="green-button-mobile mobile-only"></button>
+              <div id="textoConfirmacao" class="confirmacao-texto mobile-only">clique para confirmar</div>
+            </div>
+          
+            <div class="arrow-right">⌵</div>
+          </div>
+          
+          
+
+      
+        <div class="container">
+          <!-- Container 3: Formulário -->
+          <div class="box">
+              <div class="form-section">
+                <div class="input-wrapper">
+                  <label>Horas de voo</label>
+                  <input type="number" id="horasVoo" placeholder="Ex: 60 minutos" />
+                  <span id="mensagemErro" style="display: none;">Ai cê me quebra, Mínimo 60 minutos</span>
+                </div>
+            
+                <label>Precisa de edição?</label>
+                <div class="select-wrapper">
+                  <select id="edicao">
+                    <option selected disabled hidden></option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                  </select>
+                </div>
+            
+                <label>Deslocamento incluso?</label>
+                <div class="select-wrapper">
+                  <select id="deslocamento">
+                    <option selected disabled hidden></option>
+                    <option>Sim</option>
+                    <option>Não</option>
+                  </select>
+                </div>
+            
+                <button id="calcular">CALCULAR</button>
+              </div>
+            </div>
+            
+      
 
     <!-- Container 2: Texto e botão verde -->
-    <!-- Container 2: Texto e botão verde -->
+    
     <div class="box">
         <div class="pricing-section">
         <h1 class="main-title"><span class="title-line">CALCULE AGORA</span><br>SEU VOO</h1>
@@ -265,7 +705,11 @@
     
         
     
-        <button class="green-button price-text">500$</button>
+        <a id="whatsappLink" href="#" target="_blank" style="text-decoration: none;">
+            <button class="green-button price-text"></button>
+        </a>
+          
+
         <div class="arrows">
             <span class="arrow-up">⌵</span>
             <span class="confirm-text">clique para confirmar</span>
@@ -274,6 +718,16 @@
           
         </div>
     </div>
+    <div id="mobile-whatsapp-section" style="display: none;">
+        <a id="mobile-whatsappLink" href="#" target="_blank" style="text-decoration: none;">
+          <button class="green-button-mobile price-text-mobile"></button>
+        </a>
+        <div class="arrows-mobile">
+          <span class="arrow-up-mobile">⌵</span>
+          <span class="confirm-text-mobile">clique para confirmar</span>
+          <span class="arrow-up-mobile">⌵</span>
+        </div>
+      </div>
   
 
     <!-- Container 1: Logo -->
@@ -281,5 +735,136 @@
       <img src="Imagens/fpv logo desktop.png" alt="Logo" class="logo" />
     </div>
   </div>
+  <script>
+    document.getElementById("calcular").addEventListener("click", function () {
+      const horasInput = document.getElementById("horasVoo");
+      const edicao = document.getElementById("edicao").value;
+      const deslocamento = document.getElementById("deslocamento").value;
+      const erro = document.getElementById("mensagemErro");
+      const precoBotao = document.querySelector(".green-button.price-text");
+      const arrows = document.querySelector(".arrows");
+      const whatsappLink = document.getElementById("whatsappLink");
+  
+      const minutos = parseInt(horasInput.value);
+  
+      // Esconder botões e setas no início
+      precoBotao.style.display = "none";
+      arrows.style.display = "none";
+      whatsappLink.style.display = "none";
+  
+      // Validação
+      if (isNaN(minutos) || minutos < 60) {
+        erro.style.display = "block";
+        precoBotao.textContent = "—";
+        return;
+      }
+  
+      erro.style.display = "none";
+  
+      // Cálculo
+      let precoPorMinuto = edicao === "Sim" ? 4.17 : 2.5;
+      let precoFinal = minutos * precoPorMinuto;
+  
+      if (deslocamento === "Sim") {
+        precoFinal += 25;
+      }
+  
+      // Texto do botão
+      precoBotao.textContent = `R$${precoFinal.toFixed(2)}`;
+      precoBotao.style.display = "block";
+      arrows.style.display = "flex";
+      whatsappLink.style.display = "inline-block";
+  
+      // Montar a mensagem do WhatsApp
+      const msg = `Olá, tenho interesse em ${minutos} minutos de voo ${edicao === "Sim" ? "com edição" : "sem edição"}, ${deslocamento === "Sim" ? "com deslocamento" : "sem deslocamento"}.`;
+      const phone = "556181813384"; // número no formato internacional sem +
+      const link = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  
+      whatsappLink.href = link;
+    });
+  
+    // Mensagem de erro enquanto digita
+    document.getElementById('horasVoo').addEventListener('input', function () {
+      const valor = parseInt(this.value, 10);
+      const mensagem = document.getElementById('mensagemErro');
+      mensagem.style.display = valor < 60 ? 'block' : 'none';
+    });
+    document.querySelectorAll('.dropdown-selected').forEach(function(el) {
+    el.addEventListener('click', function() {
+      // Fecha outros dropdowns abertos
+      document.querySelectorAll('.dropdown-mobile').forEach(d => {
+        if (d !== el.parentElement) d.classList.remove('active');
+      });
+      el.parentElement.classList.toggle('active');
+    });
+  });
+
+    document.querySelectorAll('.dropdown-options div').forEach(function(option) {
+        option.addEventListener('click', function() {
+        const dropdown = option.closest('.dropdown-mobile');
+        dropdown.querySelector('.dropdown-selected').textContent = option.textContent;
+        dropdown.classList.remove('active');
+
+        // Atribui o valor ao input hidden correspondente
+        const targetId = dropdown.getAttribute('data-target');
+        document.getElementById(targetId).value = option.textContent;
+        });
+    });
+
+    // Fecha o dropdown se clicar fora
+    window.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown-mobile')) {
+        document.querySelectorAll('.dropdown-mobile').forEach(d => d.classList.remove('active'));
+        }
+    });
+    function calcular() {
+    const horas = parseFloat(document.getElementById("mobile-horasVoo").value) || 0;
+    const edicao = document.getElementById("mobile-edicao").value;
+    const deslocamento = document.getElementById("mobile-deslocamento").value;
+
+    // Validação
+    if (horas < 60) {
+      document.getElementById("mobile-mensagemErro").style.display = "block";
+      document.getElementById("resultadoMobile").style.display = "none";
+      return;
+    } else {
+      document.getElementById("mobile-mensagemErro").style.display = "none";
+    }
+
+    // Cálculo
+    let total = horas * 2.5; // ajuste conforme necessário
+    if (edicao === "Sim") total += 100;
+    if (deslocamento === "Sim") total += 50;
+
+    // Atualiza e exibe o botão verde mobile
+    const botaoResultado = document.getElementById("resultadoMobile");
+    botaoResultado.textContent = `R$${total.toFixed(2).replace('.', ',')}`;
+    botaoResultado.style.display = "block";
+    botaoResultado.onclick = enviarVooMobileParaWhatsapp;
+
+
+    // Exibir setas e texto de confirmação
+    document.querySelector('.arrow-left').style.display = "block";
+    document.querySelector('.arrow-right').style.display = "block";
+    document.getElementById("textoConfirmacao").style.display = "block";
+  }
+
+  function enviarVooMobileParaWhatsapp() {
+  const horas = parseFloat(document.getElementById("mobile-horasVoo").value);
+  const edicao = document.getElementById("mobile-edicao").value;
+  const deslocamento = document.getElementById("mobile-deslocamento").value;
+
+  const mensagem = `Olá, tenho interesse em ${horas} minutos de voo ${edicao === "Sim" ? "com edição" : "sem edição"}, ${deslocamento === "Sim" ? "com deslocamento" : "sem deslocamento"}.`;
+
+  const url = `https://wa.me/556181813384?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, "_blank");
+}
+
+
+
+
+    
+  </script>
+  
 </body>
 </html>
